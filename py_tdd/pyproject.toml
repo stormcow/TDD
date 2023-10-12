@@ -4,13 +4,15 @@ version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "py_tdd"}]
+packages = [{ include = "py_tdd" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 mypy = "^1.6.0"
 flake8 = "^6.1.0"
 black = "^23.9.1"
+flake8-pyproject = "^1.2.3"
+flake8-bugbear = "^23.9.16"
 
 
 [build-system]
@@ -19,6 +21,8 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.flake8]
 max-line-length = 88
+extend-ignore = ["E203", "E501"]
 
 [tool.mypy]
 strict = true
+pretty = true

@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "py_tdd"
+		},
+		{
+			"path": "go"
+		},
+		{
+			"path": "js"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+}
