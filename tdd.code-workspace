@@ -4,13 +4,13 @@
 			"path": "py_tdd"
 		},
 		{
-			"path": "go"
-		},
-		{
 			"path": "js"
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "go"
 		}
 	],
 	"settings": {}
