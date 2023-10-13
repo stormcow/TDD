@@ -15,6 +15,7 @@ class Money {
   }
 }
 
+<<<<<<< HEAD
 class Portfolio {
   constructor() {
     this.moneys = [];
@@ -32,6 +33,8 @@ class Portfolio {
   }
 }
 
+=======
+>>>>>>> 8b41058510cc343105eedc07d1466d8040fc1b19
 let fiveDollars = new Money(5, "USD");
 let tenDollars = new Money(10, "USD");
 assert.deepStrictEqual(fiveDollars.times(2), tenDollars);
@@ -44,8 +47,11 @@ assert.deepStrictEqual(tenEuros.times(2), twentyEuros);
 let originalKRW = new Money(4002, "KRW");
 let expectedKRW = new Money(1000.5, "KRW");
 assert.deepStrictEqual(originalKRW.divide(4), expectedKRW);
+<<<<<<< HEAD
 
 let fifteenDollars = new Money(15, "USD");
 let portfolio = new Portfolio();
 portfolio.add(fiveDollars, tenDollars);
 assert.deepStrictEqual(portfolio.evaluate("USD"), fifteenDollars);
+=======
+>>>>>>> 8b41058510cc343105eedc07d1466d8040fc1b19
