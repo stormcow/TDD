@@ -17,7 +17,6 @@ class Money:
         if isinstance(other, Money):
             return self.amount == other.amount and self.currency == other.currency
         return False
-<<<<<<< HEAD
 
 
 @dataclass
@@ -32,8 +31,6 @@ class Portfolio:
         for money in self.money:
             total += money.amount
         return Money(amount=total, currency=currency)
-=======
->>>>>>> 8b41058510cc343105eedc07d1466d8040fc1b19
 
 
 class TestMoney(unittest.TestCase):
@@ -50,7 +47,6 @@ class TestMoney(unittest.TestCase):
     def testDivision(self) -> None:
         originalMoney = Money(4002, "KRW")
         expectedMoney = Money(1000.5, "KRW")
-<<<<<<< HEAD
         self.assertEqual(expectedMoney, originalMoney.divide(4))
 
     def testAddition(self) -> None:
@@ -60,11 +56,6 @@ class TestMoney(unittest.TestCase):
         portfolio = Portfolio()
         portfolio.add(fiveDollars, tenDollars)
         self.assertEqual(fifteenDollars, portfolio.evaluate("USD"))
-=======
-        self.assertEqual(
-            expectedMoney, originalMoney.divide(4)
-        )
->>>>>>> 8b41058510cc343105eedc07d1466d8040fc1b19
 
 
 if __name__ == "__main__":

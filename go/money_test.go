@@ -9,7 +9,6 @@ type Money struct {
 	currency string
 }
 
-<<<<<<< HEAD
 type Portfolio []Money
 
 func (p Portfolio) Add(money Money) Portfolio {
@@ -29,12 +28,6 @@ func (m Money) Times(multiplier int) Money {
 	return Money{amount: m.amount * float64(multiplier), currency: m.currency}
 }
 
-=======
-func (m Money) Times(multiplier int) Money {
-	return Money{amount: m.amount * float64(multiplier), currency: m.currency}
-}
-
->>>>>>> 8b41058510cc343105eedc07d1466d8040fc1b19
 func (m Money) Divide(divisor int) Money {
 	return Money{amount: m.amount / float64(divisor), currency: m.currency}
 }
@@ -64,7 +57,6 @@ func TestDivision(t *testing.T) {
 	expectedResult := Money{amount: 1000.5, currency: "KRW"}
 	assertEqual(t, expectedResult, actualResult)
 }
-<<<<<<< HEAD
 
 func TestAddition(t *testing.T) {
 	var portfolio Portfolio
@@ -80,5 +72,3 @@ func TestAddition(t *testing.T) {
 
 	assertEqual(t, fifteenDollars, portfolioInDollars)
 }
-=======
->>>>>>> 8b41058510cc343105eedc07d1466d8040fc1b19
