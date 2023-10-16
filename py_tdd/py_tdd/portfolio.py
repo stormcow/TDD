@@ -19,6 +19,13 @@ class Portfolio:
 
     def evaluate(self, currency: str) -> Money:
         total = 0.0
-        for money in self.money:
-            total += self.__convert(money, currency)
-        return Money(amount=total, currency=currency)
+        failures: list[KeyError] = []
+        for m in self.money:
+            try:
+                total += self.__convert(m, currency)
+            except KeyError as ke:
+                failures.append(ke)
+        if len(failures) == 0:
+            return Money(amount=total, currency=currency)
+        failureMessage = ",".join(str(f) for f in failures).replace("'","")
+        raise Exception("Missing exchange rate(s):[" + failureMessage + "]")
