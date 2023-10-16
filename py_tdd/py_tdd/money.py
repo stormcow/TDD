@@ -16,3 +16,6 @@ class Money:
         if isinstance(other, Money):
             return self.amount == other.amount and self.currency == other.currency
         return False
+
+    def __str__(self) -> str:
+        return f"{self.currency} {self.amount:0.2f}"
