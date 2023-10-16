@@ -32,16 +32,24 @@ class MoneyTest {
     });
     return testMethods;
   }
-  
+
   testAdditionOfDollarsAndEuros() {
-    let fiveDollars = new Money(5, "USD")
-    let tenEuros = new Money(10, "EUR")
-    let portfolio = new Portfolio()
-    portfolio.add(fiveDollars, tenEuros)
-    let expectedValue = new Money(17, "USD")
-    assert.deepStrictEqual(portfolio.evaluate("USD"), expectedValue)
+    let fiveDollars = new Money(5, "USD");
+    let tenEuros = new Money(10, "EUR");
+    let portfolio = new Portfolio();
+    portfolio.add(fiveDollars, tenEuros);
+    let expectedValue = new Money(17, "USD");
+    assert.deepStrictEqual(portfolio.evaluate("USD"), expectedValue);
   }
 
+  testAdditionOfDollarsAndWons() {
+    let oneDollar = new Money(1, "USD");
+    let elevenHundredWon = new Money(1100, "KRW");
+    let portfolio = new Portfolio();
+    portfolio.add(oneDollar, elevenHundredWon);
+    let expectedValue = new Money(2200, "KRW");
+    assert.deepStrictEqual(portfolio.evaluate("KRW"), expectedValue);
+  }
   runAllTests() {
     let testMethods = this.getAllTestMethods();
     testMethods.forEach((m) => {

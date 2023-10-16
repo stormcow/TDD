@@ -11,10 +11,11 @@ class Portfolio:
 
     @staticmethod
     def __convert(money: Money, currency: str) -> float:
-        eurToUsd = 1.2
+        exchangeRates = {"EUR->USD": 1.2, "USD->KRW": 1100}
         if money.currency == currency:
             return money.amount
-        return money.amount * eurToUsd
+        key = money.currency + "->" + currency
+        return money.amount * exchangeRates[key]
 
     def evaluate(self, currency: str) -> Money:
         total = 0.0

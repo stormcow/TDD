@@ -32,6 +32,15 @@ class TestMoney(unittest.TestCase):
         actualValue = portfolio.evaluate("USD")
         self.assertEqual(expectedValue, actualValue)
 
+    def testAdditionOfDollarsAndWons(self) -> None:
+        oneDollar = Money(1, "USD")
+        elevenHundredWon = Money(1100, "KRW")
+        portoflio = Portfolio()
+        portoflio.add(oneDollar, elevenHundredWon)
+        expectedValue = Money(2200, "KRW")
+        actualValue = portoflio.evaluate("KRW")
+        self.assertEqual(expectedValue, actualValue)
+
 
 if __name__ == "__main__":
     unittest.main()
