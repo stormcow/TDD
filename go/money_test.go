@@ -114,8 +114,19 @@ func TestConversion(t *testing.T) {
 	assertEqual(t, s.NewMoney(12, "USD"), *actualConvertedMoney)
 }
 
+func TestConversionWithDifferentRatesBetweenTwoCurrencies(t *testing.T) {
+	tenEuos := s.NewMoney(10, "EUR")
+	actualConvertedMoney, err := bank.Convert(tenEuos, "USD")
+	assertNil(t, err)
+	assertEqual(t, s.NewMoney(12, "USD"), *actualConvertedMoney)
+
+	bank.AddExchangeRate("EUR", "USD", 1.3)
+	actualConvertedMoney, err = bank.Convert(tenEuos, "USD")
+	assertNil(t, err)
+	assertEqual(t, s.NewMoney(13, "USD"), *actualConvertedMoney)
+}
+
 func TestConversionWithMissingExchangeRate(t *testing.T) {
-	bank := s.NewBank()
 	tenEuros := s.NewMoney(10, "EUR")
 	actualConvertedMoney, err := bank.Convert(tenEuros, "Kalganid")
 	if actualConvertedMoney != nil {
