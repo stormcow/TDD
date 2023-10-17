@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from .money import Money
+from .bank import Bank
 
 
 @dataclass
@@ -9,23 +10,15 @@ class Portfolio:
     def add(self, *moneys: Money) -> None:
         self.money.extend(moneys)
 
-    @staticmethod
-    def __convert(money: Money, currency: str) -> float:
-        exchangeRates = {"EUR->USD": 1.2, "USD->KRW": 1100}
-        if money.currency == currency:
-            return money.amount
-        key = money.currency + "->" + currency
-        return money.amount * exchangeRates[key]
-
-    def evaluate(self, currency: str) -> Money:
+    def evaluate(self, bank: Bank, currency: str) -> Money:
         total = 0.0
-        failures: list[KeyError] = []
+        failures: list[Exception] = []
         for m in self.money:
             try:
-                total += self.__convert(m, currency)
-            except KeyError as ke:
-                failures.append(ke)
+                total += bank.convert(m, currency).amount
+            except Exception as ex:
+                failures.append(ex)
         if len(failures) == 0:
             return Money(amount=total, currency=currency)
-        failureMessage = ",".join(str(f) for f in failures).replace("'","")
+        failureMessage = ",".join(str(f) for f in failures).replace("'", "")
         raise Exception("Missing exchange rate(s):[" + failureMessage + "]")
